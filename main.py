@@ -34,21 +34,23 @@ def signup():
             coll_name.insert_one({"email": email, "password": password})
             print("record inserted successfully")
             # return redirect(url_for('success', _external=True))
-            return redirect("https://basic-authentication-app.herokuapp.com/success")
+            # return redirect("https://basic-authentication-app.herokuapp.com/success")
+            return render_template("success.html")
         else:
             print("email already exists!")
             # return redirect(url_for('failure', _external=True))
-            return redirect("https://basic-authentication-app.herokuapp.com/failure")
+            # return redirect("https://basic-authentication-app.herokuapp.com/failure")
+            return render_template("failure.html")
     except Exception as e:
         print(str(e))
 
-@app.route('/success', methods=['GET'])
-def success():
-    return render_template("success.html")
-
-@app.route('/failure', methods=['GET'])
-def failure():
-    return render_template("failure.html")
+# @app.route('/success', methods=['GET'])
+# def success():
+#     return render_template("success.html")
+#
+# @app.route('/failure', methods=['GET'])
+# def failure():
+#     return render_template("failure.html")
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
